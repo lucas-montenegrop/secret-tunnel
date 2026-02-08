@@ -1,24 +1,22 @@
+import { useAuth } from "./AuthContext";
+
 /** Button that attempts to use the token in context when clicked */
 export default function Tablet() {
-  // TODO: call authenticate when form is submitted
+  const { authenticate } = useAuth();
 
   return (
-    <section>
-      <p>
-        The sound of your name thuds against the gate as the two badgers furrow
-        their brows. The badger on the right beckons you to approach.
-      </p>
-      <p>"Only those who are pure of heart may pass."</p>
-      <p>
-        "Place your hand upon this stone tablet, and thus will your true self be
-        revealed."
-      </p>
-      <p>
-        It holds out a rectangular stone tablet carved with an intricate design.
-      </p>
-      <form>
-        <button>Place your palm upon the tablet.</button>
+    <>
+      <h1>Stone Tablet</h1>
+      <p>The tablet hums quietly. It seems to react to your token.</p>
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          authenticate();
+        }}
+      >
+        <button>Touch the tablet</button>
       </form>
-    </section>
+    </>
   );
 }
